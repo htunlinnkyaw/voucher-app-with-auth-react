@@ -81,16 +81,18 @@ const VoucherCard = () => {
           >
             <div className="flex justify-between items-start mb-8">
               <div>
-                <h1 className="text-2xl font-bold">INVOICE</h1>
-                <p className="text-gray-600 ">INV-20240924-2951</p>
+                <h1 className="text-xl font-bold">INVOICE</h1>
+                <p className="text-gray-600 text-sm">INV-20240924-2951</p>
               </div>
               <div className="text-justify">
-                <h2 className=" font-semibold">Invoice To</h2>
-                <p className="text-gray-600 text-sm">
+                <h2 className=" font-semibold text-sm text-nowrap">
+                  Invoice To
+                </h2>
+                <p className="text-gray-600 text-sm text-nowrap">
                   {data?.data?.customer_name}
                 </p>
                 <div className="text-gray-600 text-sm ">
-                  <p className="font-semibold mt-1">Sale Date</p>
+                  <p className="font-semibold mt-1 text-sm">Sale Date</p>
                   <p className="text-[0.7rem]">
                     {formatDate(data?.data?.sale_date)}
                   </p>
@@ -140,7 +142,7 @@ const VoucherCard = () => {
                     Net Total
                   </td>
                   <td className="text-right py-2 font-semibold">
-                    {parseFloat(data?.data?.netTotal).toFixed(2)}
+                    {parseFloat(data?.data?.net_total).toFixed(2)}
                   </td>
                 </tr>
               </tbody>
@@ -170,14 +172,15 @@ const VoucherCard = () => {
               onClick={handlePrint}
               className="bg-stone-500   flex items-center text-sm justify-center gap-1 text text-white px-4 py-2 rounded hover:bg-stone-600"
             >
-              Print Voucher
+              <span className="hidden md:block">Print Voucher</span>
               <HiPrinter className="size-5" />
             </button>
             <button
               onClick={handlePdf}
               className="bg-stone-500  flex items-center justify-center gap-1 text-sm text-white px-4 py-2 rounded hover:bg-stone-600"
             >
-              Download PDF
+              <span className="hidden md:block">Download PDF</span>
+
               <HiDownload className="size-5" />
             </button>
           </div>

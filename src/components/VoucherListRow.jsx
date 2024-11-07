@@ -10,7 +10,15 @@ import useCookie from "react-use-cookie";
 bouncy.register();
 
 const VoucherListRow = ({
-  voucher: { id, voucher_id, customer_name, customer_email, sale_date },
+  voucher: {
+    id,
+    voucher_id,
+    customer_name,
+    customer_email,
+    sale_date,
+    created_at,
+    total,
+  },
 }) => {
   const [token] = useCookie("my_token");
   const { mutate } = useSWRConfig();
@@ -34,16 +42,17 @@ const VoucherListRow = ({
   return (
     <>
       <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-        <td className="px-6 py-4">{voucher_id}</td>
+        <td className="px-6 py-4 text-start">{id}</td>
         <th
           scope="row"
-          className="px-6 py-4 font-medium text-stone-900 whitespace-nowrap dark:text-white"
+          className="px-6 py-4 flex flex-col font-medium text-stone-900 whitespace-nowrap dark:text-white"
         >
-          {customer_name}
+          <span className="text-gray-500">{customer_name}</span>
+          <span className="text-gray-400">{customer_email}</span>
         </th>
-        <td className="px-6 py-4 ">{customer_email}</td>
+        <td className="px-6 py-4 ">{total}</td>
         <td className="px-6 py-4 text-end">
-          <ShowDate timestamp={sale_date} />
+          <ShowDate timestamp={created_at} />
         </td>
         <td className="px-6 py-4 text-end">
           <div className="inline-flex  rounded-md shadow-sm" role="group">

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { HiSearch } from "react-icons/hi";
+import { HiChevronDown, HiChevronUp, HiSearch } from "react-icons/hi";
 import endpoint from "../constant/endpoint";
 import VoucherListLoader from "./VoucherListLoader";
 import VoucherRowEmpty from "./VoucherRowEmpty";
@@ -33,6 +33,12 @@ const VoucherList = () => {
     setFetchUrl(url);
   };
 
+  const handleSort = (sortData) => {
+    // console.log(sortData);
+    const sortParam = new URLSearchParams(sortData).toString();
+    setFetchUrl(`${endpoint}/vouchers?${sortParam}`);
+  };
+
   return (
     <div>
       <div className="mt-4">
@@ -62,14 +68,34 @@ const VoucherList = () => {
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-6 py-3">
-                  Voucher ID
+                <th scope="col" className="px-6 flex items-center gap-1 py-3">
+                  <div className="flex flex-col">
+                    <button
+                      onClick={handleSort.bind(null, {
+                        sort_by: "id",
+                        sort_direction: "asc",
+                      })}
+                      className="hover:bg-stone-400 hover:rounded-sm active:scale-95 duration-200"
+                    >
+                      <HiChevronUp />
+                    </button>
+                    <button
+                      onClick={handleSort.bind(null, {
+                        sort_by: "id",
+                        sort_direction: "desc",
+                      })}
+                      className="hover:bg-stone-400 hover:rounded-sm active:scale-95 duration-200"
+                    >
+                      <HiChevronDown />
+                    </button>
+                  </div>
+                  <span> Voucher ID</span>
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Customer Name
+                  Customer
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Email
+                  Total
                 </th>
                 <th scope="col" className="px-6 py-3 text-end">
                   Created At

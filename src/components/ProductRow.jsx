@@ -59,19 +59,19 @@ const ProductRow = ({
           <div className="inline-flex rounded-md shadow-sm" role="group">
             <Link
               to={`/dashboard/product/edit/${id}`}
-              className="size-10 flex items-center justify-center text-lg font-medium text-gray-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
+              className="size-10 flex items-center justify-center  font-medium text-gray-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
             >
-              <HiOutlinePencil />
+              <HiOutlinePencil size={13} />
             </Link>
             <button
               onClick={handleDeleteBtn}
               type="button"
-              className="size-10 flex items-center justify-center text-lg font-medium text-gray-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
+              className="size-10 flex items-center justify-center  font-medium text-gray-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
             >
               {isDeleting ? (
                 <l-bouncy size="20" speed="1.75" color="gray"></l-bouncy>
               ) : (
-                <HiOutlineTrash />
+                <HiOutlineTrash size={13} />
               )}
             </button>
           </div>
